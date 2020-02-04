@@ -8,10 +8,12 @@ namespace aknakereso
 {
     class Program
     {
+        char [,] pálya = new char[10,10];
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello GIT");
+            Feltöltés();
             Console.ReadKey();
         }
+        
     }
 }
