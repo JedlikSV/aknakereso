@@ -13,7 +13,7 @@ namespace aknakereso
             char[,] pálya = new char[10, 10];
 
             Feltöltés(pálya);
-            Kirajzoló();
+            Kirajzoló(pálya);
             Console.ReadKey();
         }
 
@@ -42,9 +42,20 @@ namespace aknakereso
             }
         }
 
-        static void Kirajzoló()
+        static void Kirajzoló(char[,] pálya)
         {
-            
-        }               
+            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+
+            for (int sor = 0; sor < pálya.GetLength(0); sor++)
+            {
+
+                for (int oszlop = 0; oszlop < pálya.GetLength(1); oszlop++)
+                {
+                    Console.Write($"{pálya[sor, oszlop]}|");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
