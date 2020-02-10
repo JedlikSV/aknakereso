@@ -5,3 +5,10 @@ C:\Users\suslecz.viktoria\Source\Repos\aknakereso\aknakereso\bin\Debug\aknakeres
 C:\Users\suslecz.viktoria\Source\Repos\aknakereso\aknakereso\bin\Debug\aknakereso.pdb
 C:\Users\suslecz.viktoria\Source\Repos\aknakereso\aknakereso\obj\Debug\aknakereso.exe
 C:\Users\suslecz.viktoria\Source\Repos\aknakereso\aknakereso\obj\Debug\aknakereso.pdb
+C:\Users\Babus\Source\Repos\aknakereso3\aknakereso\bin\Debug\aknakereso.exe.config
+C:\Users\Babus\Source\Repos\aknakereso3\aknakereso\bin\Debug\aknakereso.exe
+C:\Users\Babus\Source\Repos\aknakereso3\aknakereso\bin\Debug\aknakereso.pdb
+C:\Users\Babus\Source\Repos\aknakereso3\aknakereso\obj\Debug\aknakereso.csprojAssemblyReference.cache
+C:\Users\Babus\Source\Repos\aknakereso3\aknakereso\obj\Debug\aknakereso.csproj.CoreCompileInputs.cache
+C:\Users\Babus\Source\Repos\aknakereso3\aknakereso\obj\Debug\aknakereso.exe
+C:\Users\Babus\Source\Repos\aknakereso3\aknakereso\obj\Debug\aknakereso.pdb

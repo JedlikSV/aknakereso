@@ -19,26 +19,28 @@ namespace aknakereso
 
         static void Feltöltés(char[,] pálya)
         {
-            for (int i = 0; i < pálya.GetLength(0); i++)
+            int sor, oszlop;
+            for (sor = 1; sor < pálya.GetLength(0); sor++)
             {
-                for (int j = 0; j < pálya.GetLength(1); j++)
+                for (oszlop = 1; oszlop < pálya.GetLength(1); oszlop++)
                 {
-                    pálya[i, j] = '_';
+                    pálya[sor, oszlop] = '_';
                 }
             }
+            Console.Write("sor száma: ");
+            int sorszám = int.Parse(Console.ReadLine());
+            Console.Write("oszlop száma: ");
+            int oszlopszám = int.Parse(Console.ReadLine());
 
-            Random rnd = new Random();
-            int sor, oszlop;
-
-            for (int i = 0; i < 10; i++)
+            if (oszlopszám < 10 && sorszám < 10)
             {
                 do
                 {
-                    sor = rnd.Next(10);
-                    oszlop = rnd.Next(10);
+                    sor = sorszám;
+                    oszlop = oszlopszám;
 
-                } while (pálya[sor, oszlop] == 'B');
-                pálya[sor, oszlop] = 'B';
+                } while (pálya[sor, oszlop] == 'X');
+                pálya[sor, oszlop] = 'X';
             }
         }
 
@@ -47,10 +49,10 @@ namespace aknakereso
             Console.BackgroundColor = ConsoleColor.Cyan;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
 
-            for (int sor = 0; sor < pálya.GetLength(0); sor++)
+            for (int sor = 1; sor < pálya.GetLength(0); sor++)
             {
 
-                for (int oszlop = 0; oszlop < pálya.GetLength(1); oszlop++)
+                for (int oszlop = 1; oszlop < pálya.GetLength(1); oszlop++)
                 {
                     Console.Write($"{pálya[sor, oszlop]}|");
                 }
