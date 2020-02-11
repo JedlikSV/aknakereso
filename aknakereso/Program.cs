@@ -117,5 +117,17 @@ namespace aknakereso
             return bombadb;
         }
 
+        static int UnderScore(char[,] pálya)
+        {
+            int aláhúzás = 0;
+            for (int i = 0; i < pálya.GetLength(0); i++)
+			{
+                for (int i = 0; i < pálya.GetLength(1); i++)
+			    {
+                    aláhúzás++;
+			    }
+			}
+            return aláhúzás;
+        }
     }   
 }
