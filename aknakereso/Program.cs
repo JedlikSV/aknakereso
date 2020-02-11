@@ -124,7 +124,10 @@ namespace aknakereso
 			{
                 for (int i = 0; i < pálya.GetLength(1); i++)
 			    {
-                    aláhúzás++;
+                    if (pálya[i,j] == '_')
+	                {
+                        aláhúzás++;
+	                }
 			    }
 			}
             return aláhúzás;
