@@ -10,54 +10,112 @@ namespace aknakereso
     {
         static void Main(string[] args)
         {
-            char[,] pálya = new char[10, 10];
-
+             char[,] pálya = new char[12, 12];
             Feltöltés(pálya);
-            Kirajzoló(pálya);
+            Bombasorsoló(pálya);
+            Kirajzoló(pálya, true);
+            int lépx;
+            int lépy;
+            do
+            {
+                Lépés(pálya, out lépx, out lépy);
+            } while (pálya[lépx, lépy] != 'B');
             Console.ReadKey();
         }
 
         static void Feltöltés(char[,] pálya)
         {
-            int sor, oszlop;
-            for (sor = 1; sor < pálya.GetLength(0); sor++)
+
+            for (int i = 0; i < pálya.GetLength(0); i++)
             {
-                for (oszlop = 1; oszlop < pálya.GetLength(1); oszlop++)
+                for (int j = 0; j < pálya.GetLength(1); j++)
                 {
-                    pálya[sor, oszlop] = '_';
+                    pálya[i, j] = '_';
                 }
-            }
-            Console.Write("sor száma: ");
-            int sorszám = int.Parse(Console.ReadLine());
-            Console.Write("oszlop száma: ");
-            int oszlopszám = int.Parse(Console.ReadLine());
-
-            if (oszlopszám < 10 && sorszám < 10)
-            {
-                do
-                {
-                    sor = sorszám;
-                    oszlop = oszlopszám;
-
-                } while (pálya[sor, oszlop] == 'X');
-                pálya[sor, oszlop] = 'X';
             }
         }
 
-        static void Kirajzoló(char[,] pálya)
+        static void Lépés(char[,] pálya, out int lépx, out int lépy)
         {
-            Console.BackgroundColor = ConsoleColor.Cyan;
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-
-            for (int sor = 1; sor < pálya.GetLength(0); sor++)
+            
+            Console.Write("Kérem a sorszámot: ");
+            lépx = int.Parse(Console.ReadLine());
+            Console.Write("Kérem az oszlopszámot: ");
+            lépy = int.Parse(Console.ReadLine());
+            if (pálya[lépx, lépy] == 'B')
             {
+                Kirajzoló(pálya, true);
+                Console.WriteLine("Felrobbantál.");
+            }
 
-                for (int oszlop = 1; oszlop < pálya.GetLength(1); oszlop++)
+            else
+            {
+                pálya[lépx, lépy] = char.Parse(BombaSzomszédSzám(pálya,lépx,lépy).ToString());
+                Kirajzoló(pálya, true);
+            }
+        }
+
+        static void Bombasorsoló(char[,] pálya)
+        {
+            Random gép = new Random();
+            Console.WriteLine("Add meg a bombaszámot.");
+            int bombaszám = int.Parse(Console.ReadLine());
+            int sor;
+            int oszlop;
+            for (int i = 0; i < bombaszám; i++)
+            {
+                do
                 {
-                    Console.Write($"{pálya[sor, oszlop]}|");
+                    sor = gép.Next(1,11);
+                    oszlop = gép.Next(1,11);
+                } while (pálya[sor, oszlop] == 'B');
+                pálya[sor, oszlop] = 'B';
+            }
+        }
+
+        static void Kirajzoló(char[,] pálya, bool legyenbomba)
+        {
+            for (int i = 1; i < pálya.GetLength(0)-1; i++)
+            {
+                for (int j = 1; j < pálya.GetLength(1)-1; j++)
+                {
+                    if (!legyenbomba)
+                    {
+                        if (pálya[i,j]=='B')
+                        {
+                            Console.Write('_');
+                        }
+                        else
+                        {
+                            Console.Write(pálya[i, j]);
+                        }
+                    }
+                    else
+                    {
+                        Console.Write(pálya[i,j]);
+
+                    }
+                    Console.Write('|');
                 }
                 Console.WriteLine();
             }
         }
-    }
+
+        static int BombaSzomszédSzám(char[,] pálya,int lépx, int lépy)
+        {
+            int bombadb = 0;
+            for (int i = lépx-1; i <= lépx+1; i++)
+            {
+                for (int j = lépy-1; j <= lépy+1; j++)
+                {
+                    if (pálya[i,j]=='B')
+                    {
+                        bombadb++;
+                    }
+                }
+            }
+            return bombadb;
+        }
+
+    }   
 }
