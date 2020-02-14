@@ -10,7 +10,7 @@ namespace aknakereso
     {
         static void Main(string[] args)
         {
-             char[,] pálya = new char[12, 12];
+            char[,] pálya = new char[12, 12];
             Feltöltés(pálya);
             Bombasorsoló(pálya);
             Kirajzoló(pálya, true);
@@ -20,12 +20,19 @@ namespace aknakereso
             {
                 Lépés(pálya, out lépx, out lépy);
             } while (pálya[lépx, lépy] != 'B');
+            if (aláhúzás == 44)
+	        {
+                Console.WriteLine("Győztél!");
+	        }
+            else
+	        {
+                Console.WriteLine("Felrobbantál!");
+	        }
             Console.ReadKey();
         }
 
         static void Feltöltés(char[,] pálya)
         {
-
             for (int i = 0; i < pálya.GetLength(0); i++)
             {
                 for (int j = 0; j < pálya.GetLength(1); j++)
@@ -36,8 +43,7 @@ namespace aknakereso
         }
 
         static void Lépés(char[,] pálya, out int lépx, out int lépy)
-        {
-            
+        {          
             Console.Write("Kérem a sorszámot: ");
             lépx = int.Parse(Console.ReadLine());
             Console.Write("Kérem az oszlopszámot: ");
@@ -47,7 +53,6 @@ namespace aknakereso
                 Kirajzoló(pálya, true);
                 Console.WriteLine("Felrobbantál.");
             }
-
             else
             {
                 pálya[lépx, lépy] = char.Parse(BombaSzomszédSzám(pálya,lépx,lépy).ToString());
